@@ -4,7 +4,7 @@ import {calculate} from './calculator-fns'
 
 export const Calculator = component$(() => {
     
-    const display = useSignal('0');
+    const display = useSignal<[string, string]>(['0', '']);
 
     const onClick = $((e) => {
 
@@ -16,7 +16,10 @@ export const Calculator = component$(() => {
     })
 
     return (<div class="calculator">
-        <div class="display">{display.value}</div>
+        <div class="display">
+            <div class="history">{display.value[1]}</div>
+            <div class="value">{display.value[0]}</div>
+        </div>
         <div class="controls">
             <div class="numbers">
                 <button class="number" data-operation="append" data-value="1" onClick$={onClick} >1</button>
@@ -31,15 +34,15 @@ export const Calculator = component$(() => {
                 <button class="number" data-operation="append" data-value="0" onClick$={onClick} >0</button>
             </div>
             <div class="arithmetic">
-                <button data-operation="add">+</button>
-                <button data-operation="subtract">-</button>
-                <button data-operation="multiply">*-</button>
-                <button data-operation="divide">%</button>
+                <button onClick$={onClick} data-operation="add" >+</button>
+                <button onClick$={onClick} data-operation="subtract">-</button>
+                <button onClick$={onClick} data-operation="multiply">*-</button>
+                <button onClick$={onClick} data-operation="divide">%</button>
             </div>
             <div class="execute">
-            <button data-operation="clear-last">c</button>
-                <button data-operation="clear-all">ca</button>
-                <button data-operation="execute">=</button>
+            <button onClick$={onClick} data-operation="clear-last">c</button>
+                <button onClick$={onClick} data-operation="clear-all">ca</button>
+                <button onClick$={onClick} data-operation="equals">=</button>
             </div>
         </div>
     </div>)
