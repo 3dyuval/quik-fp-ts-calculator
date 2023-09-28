@@ -41,18 +41,17 @@
         grid-column: 1 / 5;
         grid-row: 3 / 7;
         grid-gap: inherit;
-
         &, & > * {
             display: grid;
             grid-template-columns: subgrid;
             grid-template-rows: subgrid;
         }
-
+        
         .numbers {
             grid-row:  1 / 5;
             grid-column: 1 / 4;
         }
-
+        
         .arithmetic {
             grid-row:  1 / 5 ;
             grid-column: 4 / 5;
