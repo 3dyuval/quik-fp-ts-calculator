@@ -1,6 +1,5 @@
 import { component$, useSignal, $} from '@builder.io/qwik'
 import './calculator.scss'
-import {calculate} from './calculator-fns'
 
 export const Calculator = component$(() => {
     
@@ -8,6 +7,7 @@ export const Calculator = component$(() => {
 
 
     const onClick = $((e) => {
+
 
         if (e.target.dataset.value) {
             display.value = [display.value[0] + e.target.dataset.value, display.value[1]]
